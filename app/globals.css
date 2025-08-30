@@ -1,0 +1,164 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Fixed dark mode selector to work with next-themes */
+@custom-variant dark (&:is(.dark, .dark *));
+
+:root {
+  /* Updated to vibrant retro color palette from the BIGEK screenshot */
+  --background: #5856d6; /* Retro blue background */
+  --foreground: #ffffff; /* White text for contrast */
+  --card: #ffffff; /* White cards for pop */
+  --card-foreground: #000000; /* Black text on cards */
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+  --primary: #ffff00; /* Bright yellow like the B in BIGEK */
+  --primary-foreground: #ff6b35; /* Orange text on yellow */
+  --secondary: #ff69b4; /* Hot pink like the I in BIGEK */
+  --secondary-foreground: #ffffff;
+  --muted: #98fb98; /* Light green like the G in BIGEK */
+  --muted-foreground: #000000;
+  --accent: #ff6347; /* Orange like the E in BIGEK */
+  --accent-foreground: #ffffff;
+  --destructive: #ff1493; /* Deep pink for destructive actions */
+  --destructive-foreground: #ffffff;
+  --border: #000000; /* Black borders for that bold retro look */
+  --input: #ffffff;
+  --ring: #ffff00;
+  --chart-1: #ffff00; /* Yellow */
+  --chart-2: #ff69b4; /* Hot pink */
+  --chart-3: #98fb98; /* Light green */
+  --chart-4: #ff6347; /* Orange */
+  --chart-5: #f0f8ff; /* Light cream like the K in BIGEK */
+  --radius: 1rem; /* Increased border radius for more playful look */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #000000;
+  --sidebar-primary: #ffff00;
+  --sidebar-primary-foreground: #ff6b35;
+  --sidebar-accent: #ff69b4;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #000000;
+  --sidebar-ring: #ffff00;
+}
+
+/* Enhanced dark mode colors for better contrast and visibility */
+.dark {
+  --background: #1a1a2e; /* Much darker background for true night mode */
+  --foreground: #ffffff;
+  --card: #16213e; /* Dark blue-purple cards */
+  --card-foreground: #ffffff;
+  --popover: #16213e;
+  --popover-foreground: #ffffff;
+  --primary: #ffd700; /* Gold yellow for better dark mode visibility */
+  --primary-foreground: #000000;
+  --secondary: #ff1493; /* Deep pink */
+  --secondary-foreground: #ffffff;
+  --muted: #0f3460; /* Dark muted blue */
+  --muted-foreground: #ffffff;
+  --accent: #ff4500; /* Orange red */
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #4a5568; /* Gray borders in dark mode */
+  --input: #16213e;
+  --ring: #ffd700;
+  --chart-1: #ffd700;
+  --chart-2: #ff1493;
+  --chart-3: #32cd32;
+  --chart-4: #ff4500;
+  --chart-5: #f5deb3;
+  --sidebar: #16213e;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #ffd700;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #ff1493;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #4a5568;
+  --sidebar-ring: #ffd700;
+}
+
+/* Updated font configuration to use Bigek */
+@theme inline {
+  --font-sans: "Bigek", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    /* Updated background gradients to work better in both light and dark modes */
+    background-image: radial-gradient(circle at 20% 80%, rgba(255, 255, 0, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 105, 180, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(152, 251, 152, 0.1) 0%, transparent 50%);
+  }
+
+  /* Added dark mode specific background gradients */
+  .dark body {
+    background-image: radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 20, 147, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(50, 205, 50, 0.05) 0%, transparent 50%);
+  }
+}
+
+/* Added retro decorative elements */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+.retro-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.retro-shadow {
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
+}
+
+/* Added dark mode shadow variant */
+.dark .retro-shadow {
+  box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.2);
+}
